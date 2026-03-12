@@ -1,23 +1,30 @@
-from fastapi import HTTPException, Security
+from typing import Optional
+
+from fastapi import HTTPException, Request, Security
 from fastapi.security import APIKeyHeader
-from starlette.status import HTTP_403_FORBIDDEN
+from starlette.status import HTTP_401_UNAUTHORIZED
 
-from src.api.config import settings
+from src.config import Config
 
-API_KEY = settings.API_KEY
+MASTER_KEY = Config.MASTER_KEY
+
+if MASTER_KEY is None:
+    raise ValueError("MASTER_KEY must be set in the environment variables")
 
 
-def validate_api_key(
-    api_key_header: str = Security(
-        APIKeyHeader(name="API-KEY", auto_error=False)
-    )
-):
+def validate_admin(
+    request: Request,
+    master_key_header: Optional[str] = Security(
+        APIKeyHeader(
+            name="MASTER-KEY",
+            auto_error=False,
+        )
+    ),
+) -> None:
     """
-    Check if API key is valid.
+    Check if user is admin or master key is valid.
     """
-    if api_key_header == API_KEY:
-        return api_key_header
-
-    raise HTTPException(
-        status_code=HTTP_403_FORBIDDEN, detail="Invalid or missing API key"
-    )
+    if master_key_header != MASTER_KEY:
+        raise HTTPException(
+            status_code=HTTP_401_UNAUTHORIZED, detail="Invalid or missing MASTER key"
+        )

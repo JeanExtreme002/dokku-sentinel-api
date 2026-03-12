@@ -1,8 +1,16 @@
 [flake8]
 
 max-line-length = 110
-ignore = E701, E203, W605
+ignore = E701, E203, W605, W503, W504
 
 per-file-ignores =
     # __init__.py files are allowed to have unused imports and lines-too-long
     */__init__.py:F401
+
+exclude = 
+    .git
+    __pycache__
+    build
+    dist
+    docs/source/conf.py
+    old

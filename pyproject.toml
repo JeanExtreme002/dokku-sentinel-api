@@ -1,49 +1,85 @@
-[tool.poetry]
-name = "dokku-api"
-version = "0.1.0"
+[project]
+name = "dokku-acl-api"
+version = "1.0.0"
 description = ""
-authors = ["JeanExtreme002 <jeangamerextreme@gmail.com>"]
 readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+
+keywords = ["dokku", "acl"]
+
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Security",
+    "Topic :: System :: Systems Administration",
+]
+
+dependencies = [
+    "python-dotenv==0.19.2",
+    "fastapi==0.75.0",
+    "pydantic==1.10",
+    "asyncssh==2.13.2",
+    "python-decouple==3.6",
+    "anyio==3.5.0",
+    "asgiref==3.5.0",
+    "bcrypt==3.2.0",
+    "cffi==1.15.0",
+    "click==8.0.4",
+    "colorama==0.4.4",
+    "cryptography==36.0.1",
+    "h11==0.13.0",
+    "httptools==0.6.4",
+    "idna==3.3",
+    "pycparser==2.21",
+    "PyNaCl==1.5.0",
+    "python-multipart==0.0.5",
+    "PyYAML==6.0",
+    "six==1.16.0",
+    "sniffio==1.2.0",
+    "starlette==0.17.1",
+    "typing_extensions==4.6.0",
+    "uvicorn==0.17.5",
+    "watchgod==0.7",
+    "websockets==10.2",
+    "requests>=2.32.3",
+    "pymysql>=1.1.1",
+    "sqlalchemy>=2.0.41",
+    "aiofiles>=24.1.0",
+    "asyncmy>=0.2.10",
+    "httpx>=0.28.1",
+    "aiomysql>=0.2.0",
+    "greenlet (>=3.2.4,<4.0.0)",
+    "apscheduler (>=3.11.2,<4.0.0)",
+]
+
+[tool.poetry]
+name = "dokku-acl-api"
+version = "1.0.0"
+description = ""
+readme = "README.md"
+license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
-python-dotenv = "0.19.2"
-fastapi = "0.75.0"
-pydantic = "1.10"
-paramiko = "2.10.1"
-python-decouple = "3.6"
-anyio = "3.5.0"
-asgiref = "3.5.0"
-bcrypt = "3.2.0"
-cffi = "1.15.0"
-click = "8.0.4"
-colorama = "0.4.4"
-cryptography = "36.0.1"
-h11 = "0.13.0"
-httptools = "0.6.4"
-idna = "3.3"
-pycparser = "2.21"
-PyNaCl = "1.5.0"
-python-multipart = "0.0.5"
-PyYAML = "6.0"
-six = "1.16.0"
-sniffio = "1.2.0"
-starlette = "0.17.1"
-typing_extensions = "4.1.1"
-uvicorn = "0.17.5"
-watchgod = "0.7"
-websockets = "10.2"
-requests = "^2.32.3"
+python = "^3.11"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^7.1.0"
-black = "^24.4.2"
-isort = "^6.0.1"
-coverage = "^7.6.4"
+flake8 = ">=7.1.0"
+isort = ">=6.0.1"
+coverage = ">=7.6.4"
+black = ">=25.1.0"
+commitizen = ">=4.8.2"
+twine = ">=5.0.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line-length = 80
+line-length = 88
+target-version = ["py39"]
