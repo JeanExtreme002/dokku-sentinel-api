@@ -23,7 +23,7 @@ def get_app() -> FastAPI:
     logging.basicConfig(level=Config.API_LOG_LEVEL.upper())
 
     _app = FastAPI(
-        title="Dokku-ACL API",
+        title="Dokku-Sentinel API",
         default_response_class=JSONResponse,
     )
 

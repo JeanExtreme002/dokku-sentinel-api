@@ -1,12 +1,12 @@
 [project]
-name = "dokku-acl-api"
+name = "dokku-sentinel-api"
 version = "1.0.0"
 description = ""
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.11"
 
-keywords = ["dokku", "acl"]
+keywords = ["dokku", "acl", "ssh-keys"]
 
 classifiers = [
     "License :: OSI Approved :: MIT License",
@@ -59,7 +59,7 @@ dependencies = [
 ]
 
 [tool.poetry]
-name = "dokku-acl-api"
+name = "dokku-sentinel-api"
 version = "1.0.0"
 description = ""
 readme = "README.md"
