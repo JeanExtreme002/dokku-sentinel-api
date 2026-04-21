@@ -47,6 +47,18 @@ def get_router(app: FastAPI) -> APIRouter:
         
     @router.post("/ssh-keys/register", response_description="Register a SSH key")
     async def register_ssh_keys(request: Request, user: str, public_ssh_key: str):
+        remove_command = f"dokku ssh-keys:remove {user}"
+        try:
+            remove_args = shlex.split(remove_command)
+            remove_proc = await asyncio.create_subprocess_exec(
+                *remove_args,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+            )
+            await remove_proc.communicate()
+        except Exception:
+            pass
+
         with tempfile.NamedTemporaryFile(
             mode="w+b", delete=False, suffix=".pub"
         ) as temp_file:
