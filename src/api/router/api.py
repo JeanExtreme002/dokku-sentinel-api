@@ -54,7 +54,7 @@ def get_router(app: FastAPI) -> APIRouter:
             temp_file.write(bytes(content))
             temp_file_path = temp_file.name
 
-        command = f"ssh-keys:add {user} {temp_file_path}"
+        command = f"dokku ssh-keys:add {user} {temp_file_path}"
 
         try:
             args = shlex.split(command)
